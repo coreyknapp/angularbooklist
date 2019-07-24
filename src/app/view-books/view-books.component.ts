@@ -42,7 +42,6 @@ export class ViewBooksComponent implements OnInit {
 
   saveEdit():void {
     var oldBook = this.books.find(b => b.id == this.curEdit);
-    console.log("CurTitle: " + this.curTitle);
     oldBook.title = this.curTitle;
     oldBook.author = this.curAuthor;
     oldBook.isbn = this.curIsbn;
@@ -50,5 +49,8 @@ export class ViewBooksComponent implements OnInit {
     oldBook.finished = this.curFinished;
     this.bookService.updateBook(oldBook);
     this.curEdit = -1;
+    this.curTitle = "";
+    this.curAuthor = "";
+    this.curIsbn = "";
   }
 }

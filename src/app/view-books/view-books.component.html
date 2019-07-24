@@ -33,6 +33,6 @@
             <span *ngIf="curEdit != book.id; else elseEdit"><a (click)="edit(book.id)" title="edit">X</a></span>
             <ng-template #elseEdit><button (click)="saveEdit()">Save</button></ng-template>
         </td>
-        <td class="thlink"><a (click)="delete(book.id)" title="delete">X</a></td>
+        <td class="thlink"><a (click)="delete(book)" title="delete">X</a></td>
     </tr>
 </table>
