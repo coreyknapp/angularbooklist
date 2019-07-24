@@ -5,8 +5,8 @@
         <th>ISBN</th>
         <th># of Pages</th>
         <th>Finished?</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        <th class="thlink">Edit</th>
+        <th class="thlink">Delete</th>
     </tr>
     <tr *ngFor="let book of books">
         <td>{{book.title}}</td>
@@ -14,7 +14,7 @@
         <td>{{book.isbn}}</td>
         <td>{{book.pages}}</td>
         <td>{{book.finished}}</td>
-        <td>X</td>
-        <td>X</td>
+        <td class="thlink"><a href="/edit/{{book.id}}" title="edit">X</a></td>
+        <td class="thlink"><a (click)="delete(book)" title="delete">X</a></td>
     </tr>
 </table>

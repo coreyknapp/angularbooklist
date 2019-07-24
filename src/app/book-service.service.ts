@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Book } from './book';
 import { Observable, of } from 'rxjs';
 
-const bookArray:Book[] = [
+var bookArray:Book[] = [
   {id: 1, title: "Mistborn", author: "Brandon Sanderson", isbn: "342-6934-3210", pages: 600, finished: true},
   {id: 2, title: "Mort", author: "Terry Pratchett", isbn: "823-8583-0128", pages: 345, finished: true},
   {id: 3, title: "The Man in the High Castle", author: "Philip K. Dick", isbn: "759-0932-3582", pages: 329, finished: true},
@@ -20,5 +20,9 @@ export class BookService {
 
   getBooks():Observable<Book[]>{
     return of(bookArray);
+  }
+
+  deleteBook(id:number):void {
+    bookArray = bookArray.filter(b => b.id !== id);
   }
 }

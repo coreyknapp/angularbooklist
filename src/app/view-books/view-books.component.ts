@@ -18,4 +18,9 @@ export class ViewBooksComponent implements OnInit {
   fillBooksArray(): void {
     this.bookService.getBooks().subscribe(value => this.books = value);
   }
+
+  delete(book:Book):void {
+    this.books = this.books.filter(b => b !== book);
+    this.bookService.deleteBook(book.id);
+  }
 }
