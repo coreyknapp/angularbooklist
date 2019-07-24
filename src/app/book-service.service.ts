@@ -25,4 +25,14 @@ export class BookService {
   deleteBook(id:number):void {
     bookArray = bookArray.filter(b => b.id !== id);
   }
+
+  updateBook(book:Book):void {
+    this.getBook(book.id).subscribe(foundBook => {
+      foundBook.title = book.title;
+      foundBook.author = book.author;
+      foundBook.isbn = book.isbn;
+      foundBook.pages = book.pages;
+      foundBook.finished = book.finished;
+    });
+  }
 }

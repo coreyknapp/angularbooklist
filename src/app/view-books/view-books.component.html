@@ -9,12 +9,30 @@
         <th class="thlink">Delete</th>
     </tr>
     <tr *ngFor="let book of books">
-        <td>{{book.title}}</td>
-        <td>{{book.author}}</td>
-        <td>{{book.isbn}}</td>
-        <td>{{book.pages}}</td>
-        <td>{{book.finished}}</td>
-        <td class="thlink"><a href="/edit/{{book.id}}" title="edit">X</a></td>
-        <td class="thlink"><a (click)="delete(book)" title="delete">X</a></td>
+        <td>
+            <span *ngIf="curEdit == book.id; else elseTitle"><input [(ngModel)]="curTitle"/></span>
+            <ng-template #elseTitle>{{book.title}}</ng-template>
+        </td>
+        <td>
+            <span *ngIf="curEdit == book.id; else elseAuthor"><input [(ngModel)]="curAuthor"/></span>
+            <ng-template #elseAuthor>{{book.author}}</ng-template>
+        </td>
+        <td>
+            <span *ngIf="curEdit == book.id; else elseIsbn"><input type="text" [(ngModel)]="curIsbn"/></span>
+            <ng-template #elseIsbn>{{book.isbn}}</ng-template>
+        </td>
+        <td>
+            <span *ngIf="curEdit == book.id; else elsePages"><input type="text" [(ngModel)]="curPages"/></span>
+            <ng-template #elsePages>{{book.pages}}</ng-template>
+        </td>
+        <td>
+            <span *ngIf="curEdit == book.id; else elseFinished"><input type="checkbox" [(ngModel)]="curFinished"/></span>
+            <ng-template #elseFinished>{{book.finished}}</ng-template>
+        </td>
+        <td class="thlink">
+            <span *ngIf="curEdit != book.id; else elseEdit"><a (click)="edit(book.id)" title="edit">X</a></span>
+            <ng-template #elseEdit><button (click)="saveEdit()">Save</button></ng-template>
+        </td>
+        <td class="thlink"><a (click)="delete(book.id)" title="delete">X</a></td>
     </tr>
 </table>
