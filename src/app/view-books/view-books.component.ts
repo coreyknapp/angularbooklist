@@ -10,6 +10,7 @@ import { BookService } from '../book-service.service';
 export class ViewBooksComponent implements OnInit {
   books:Book[] = [];
   curEdit:number = -1;
+  addingBook:boolean = false;
   @Input() curTitle:string;
   @Input() curAuthor:string;
   @Input() curIsbn:string;
@@ -53,5 +54,13 @@ export class ViewBooksComponent implements OnInit {
     this.curTitle = "";
     this.curAuthor = "";
     this.curIsbn = "";
+  }
+
+  onAdd(book:Book){
+    if(book){
+      this.bookService.addBook(book.title, book.author, book.isbn, book.pages, book.finished);
+    }
+    this.fillBooksArray();
+    this.addingBook = false;
   }
 }

@@ -1,1 +1,7 @@
-<p>add-book works!</p>
+<td><input type="text" placeholder="Title" [(ngModel)]="title"/></td>
+<td><input type="text" placeholder="Author" [(ngModel)]="author"/></td>
+<td><input type="text" placeholder="ISBN" [(ngModel)]="isbn"/></td>
+<td><input type="text" placeholder="# of Pages" [(ngModel)]="pages"/></td>
+<td><input type="checkbox" [(ngModel)]="finished"/></td>
+<td><button (click)="addBook()">Add</button></td>
+<td><button (click)="cancelBook()">Cancel</button></td>

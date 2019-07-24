@@ -35,4 +35,6 @@
         </td>
         <td class="thlink"><a (click)="delete(book)" title="delete">X</a></td>
     </tr>
+    <tr *ngIf="addingBook" app-add-book (adder)=onAdd($event)></tr>
 </table>
+<button *ngIf="!addingBook" (click)="addingBook = true">Add Book</button>

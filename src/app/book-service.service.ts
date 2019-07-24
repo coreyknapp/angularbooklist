@@ -10,6 +10,7 @@ var bookArray:Book[] = [
   {id: 5, title: "Dune", author: "Frank Herbert", isbn: "123-564-9874", pages: 975, finished: false},
   {id: 6, title: "Dirk Gently", author: "Douglas Adams", isbn: "543-6543-5462", pages: 240, finished: true}
 ];
+var nextID = 7;
 @Injectable({
   providedIn: 'root'
 })
@@ -34,5 +35,18 @@ export class BookService {
       foundBook.pages = book.pages;
       foundBook.finished = book.finished;
     });
+  }
+
+  addBook(title:string, author:string, isbn:string, pages:number, finished:boolean){
+    var newBook:Book = {
+      id: nextID,
+      title: title,
+      author: author,
+      isbn: isbn,
+      pages: pages,
+      finished: finished
+    };
+    bookArray.push(newBook);
+    nextID++;
   }
 }
