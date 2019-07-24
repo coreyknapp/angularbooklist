@@ -27,6 +27,7 @@ export class ViewBooksComponent implements OnInit {
 
   delete(book:Book):void {
     this.books = this.books.filter(b => b !== book);
+    this.curEdit = -1;
     this.bookService.deleteBook(book.id);
   }
 
